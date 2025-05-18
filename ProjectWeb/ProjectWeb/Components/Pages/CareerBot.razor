@@ -1,0 +1,263 @@
+﻿@page "/career-bot"
+@rendermode InteractiveServer
+@using GenerativeAI
+@using GenerativeAI.Types
+@using Markdig
+@inject IConfiguration Configuration
+@inject IJSRuntime JSRuntime
+<style>
+    /* app.css or CareerBot.razor.css */
+    .careerbot-container {
+        max-width: 1000px;
+        max-width: 1000px;
+        max-width: 1000px;
+        max-width: 1000px;
+        max-width: 1000px;
+        margin: 2em auto 0 auto;
+        padding-bottom: 2em;
+    }
+
+    .careerbot-title {
+        color: #0056b3;
+        text-align: center;
+        margin-bottom: 1.5em;
+        font-weight: 700;
+    }
+
+    .chat-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        padding: 2em 1.5em 1.5em 1.5em;
+    }
+
+    .chat-container {
+        height: 50vh;
+        overflow-y: auto;
+        border: 1px solid #e0e0e0;
+        padding: 1em;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        margin-bottom: 1em;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .message {
+        padding: 10px 16px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        max-width: 80%;
+        word-wrap: break-word;
+        font-size: 1em;
+    }
+
+    .user-message {
+        background-color: #1b6ec2;
+        color: white;
+        align-self: flex-end;
+        margin-left: auto;
+    }
+
+    .bot-message {
+        background-color: #e9ecef;
+        color: #333;
+        align-self: flex-start;
+        margin-right: auto;
+    }
+
+    .input-group textarea {
+        resize: none;
+        border-radius: 6px;
+    }
+
+    .btn-primary {
+        min-width: 100px;
+        font-weight: 600;
+    }
+
+</style>
+
+<div class="container careerbot-container">
+    <h2 class="careerbot-title">Кариерен Консултант и Избор на Гимназия</h2>
+
+    <div class="chat-card shadow-sm mb-3">
+        <div class="chat-container" id="chat-container">
+            @foreach (var message in messages)
+            {
+                <div class="message @(message.IsUser ? "user-message" : "bot-message")">
+                    <strong>@(message.IsUser ? "Вие:" : "Консултант:")</strong>
+                    <div>@((MarkupString)Markdown.ToHtml(message.Text ?? ""))</div>
+                </div>
+            }
+
+            @if (isLoading)
+            {
+                <div class="message bot-message">
+                    <strong>Консултант:</strong>
+                    <p><em>Пиша отговор...</em> <span class="spinner-border spinner-border-sm"></span></p>
+                </div>
+            }
+        </div>
+        <div class="input-group mt-3">
+            <textarea @bind="currentMessage" class="form-control" rows="3" placeholder="Задайте въпрос относно кариерно ориентиране или избор на гимназия в България..." @onkeydown="HandleKeyDown" disabled="@isLoading"></textarea>
+            <button class="btn btn-primary" @onclick="SendMessage" disabled="@isLoading">Изпрати</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private GenerativeModel? model;
+    private ChatSession? chat;
+
+    private List<ChatMessage> messages = new List<ChatMessage>();
+    private string currentMessage = string.Empty;
+    private bool isLoading = false;
+
+    // Системен промпт, който задава ролята и контекста на бота- Типове гимназии в България: езикови, математически, природо-математически, професионални (по различни направления като ИТ, икономика, туризъм, механотехника, електротехника, строителство, дизайн и др.), спортни училища, училища по изкуствата.
+    private const string SystemPrompt = @"Ти си експертен AI асистент за кариерно ориентиране и избор на гимназия в България.
+Твоята цел е да помогнеш на ученици (и техните родители) да направят информиран избор за своето бъдещо образование и кариера.
+Предоставяй информация за:
+- Различни професии и необходимите умения/образование за тях.
+- Спесифични училища  в България
+- Ключови предмети в гимназията, които са важни за определени университетски специалности и кариери (напр. математика и информатика за ИТ, биология и химия за медицина).
+- Перспективи за развитие на различни професии в България.
+- Процес на кандидатстване, балообразуване и др.
+Бъди любезен, насърчителен и се стреми да даваш конкретни и полезни съвети, страй се да не даваш грешна или не точна информация.
+Ако потребителят зададе твърде общ въпрос, помоли го да уточни своите интереси, любими предмети или предпочитания, за да можеш да дадеш по-релевантен отговор.
+Използвай Markdown за форматиране на отговорите, когато е подходящо (например списъци, удебеляване).
+Говори на български език.
+Започни разговора с поздрав и въпрос как можеш да помогнеш.";
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+           
+            var apiKey = Configuration["GeminiApiKey"];
+
+            if (string.IsNullOrEmpty(apiKey))
+            {
+                messages.Add(new ChatMessage { Text = "Грешка: API ключът за Gemini (GeminiApiKey) не е конфигуриран или е невалиден. Моля, проверете конфигурацията на приложението.", IsUser = false });
+                return;
+            };
+
+            // Инициализация на модела с API ключ и име на модела
+            // Можете да използвате и "models/gemini-pro" или други налични модели.
+            model = new GenerativeModel(apiKey, model: "models/gemini-2.5-flash-preview-04-17");
+            model.UseGoogleSearch = true; // Включва Google Search Retrieval Tool
+
+
+            var history = new List<Content>
+            {
+                new Content
+                {
+                    Role = "user",
+                    Parts = new List<Part> { new Part { Text = SystemPrompt } }
+                },
+                new Content
+                {
+                    Role = "model",
+                    Parts = new List<Part> { new Part { Text = "Здравейте! Аз съм вашият виртуален кариерен консултант. Как мога да ви бъда полезен днес относно избора на гимназия или бъдеща кариера в България?" } }
+                }
+            };
+
+            chat = model.StartChat(history: history);
+
+            messages.Add(new ChatMessage { Text = history.Last().Parts.First().Text, IsUser = false });
+        }
+        catch (Exception ex)
+        {
+            messages.Add(new ChatMessage { Text = $"Грешка при инициализация на Gemini: {ex.Message}", IsUser = false });
+            Console.WriteLine($"Gemini Initialization Error: {ex}"); // За по-лесен дебъг в конзолата на сървъра
+        }
+    }
+
+    private async Task HandleKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter" && !e.ShiftKey)
+        {
+            if (!isLoading && !string.IsNullOrWhiteSpace(currentMessage))
+            {
+                await SendMessage();
+            }
+        }
+    }
+
+    private async Task SendMessage()
+    {
+        if (string.IsNullOrWhiteSpace(currentMessage) || isLoading)
+        {
+            return;
+        }
+
+        if (model == null || chat == null)
+        {
+            messages.Add(new ChatMessage { Text = "Грешка: Чат сесията не е инициализирана правилно. Моля, проверете API ключа и конфигурацията.", IsUser = false });
+            StateHasChanged();
+            return;
+        }
+
+        var userMessageText = currentMessage;
+        messages.Add(new ChatMessage { Text = userMessageText, IsUser = true });
+        currentMessage = string.Empty; // Изчиства полето веднага
+        isLoading = true;
+        StateHasChanged(); // Показва съобщението на потребителя и "Пиша отговор..."
+
+        await JSRuntime.InvokeVoidAsync("scrollToBottom", "chat-container");
+
+        try
+        {
+            // Увеличено време за изчакване, тъй като понякога Gemini може да отнеме повече време
+            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+            var response = await chat.GenerateContentAsync(userMessageText, cts.Token).ConfigureAwait(false);
+
+            var botResponseText = response?.Text;
+
+            if (!string.IsNullOrEmpty(botResponseText))
+            {
+                messages.Add(new ChatMessage { Text = botResponseText, IsUser = false });
+            }
+            else
+            {
+                // Проверка за причината, ако отговорът е празен
+                var finishReasonMessage = "Получен е празен или непълен отговор от Gemini.";
+                if (response?.Candidates != null && response.Candidates.Any())
+                {
+                    var candidate = response.Candidates.First();
+                    finishReasonMessage += $" Причина: {candidate.FinishReason}.";
+                    if (candidate.SafetyRatings != null && candidate.SafetyRatings.Any(sr => sr.Probability != HarmProbability.NEGLIGIBLE && sr.Probability != HarmProbability.LOW))
+                    {
+                        var problematicRatings = candidate.SafetyRatings
+                            .Where(sr => sr.Probability != HarmProbability.NEGLIGIBLE && sr.Probability != HarmProbability.LOW)
+                            .Select(sr => $"{sr.Category}: {sr.Probability}");
+                        finishReasonMessage += $" Съдържанието може да е блокирано поради правила за безопасност ({string.Join(", ", problematicRatings)}).";
+                    }
+                }
+                messages.Add(new ChatMessage { Text = finishReasonMessage + " Моля, опитайте да преформулирате въпроса си.", IsUser = false });
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            messages.Add(new ChatMessage { Text = "Времето за отговор от Gemini изтече (60 секунди). Моля, проверете интернет връзката си или опитайте отново по-късно.", IsUser = false });
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Gemini API Error: {ex}"); // За сървърни логове
+            messages.Add(new ChatMessage { Text = $"Грешка при комуникация с Gemini: {ex.Message}. Проверете конзолата за повече детайли.", IsUser = false });
+        }
+        finally
+        {
+            isLoading = false;
+            // StateHasChanged трябва да бъде извикан в контекста на UI диспечера, InvokeAsync се грижи за това.
+            await InvokeAsync(StateHasChanged);
+            await JSRuntime.InvokeVoidAsync("scrollToBottom", "chat-container");
+        }
+    }
+
+    public class ChatMessage
+    {
+        public string? Text { get; set; }
+        public bool IsUser { get; set; }
+    }
+}
