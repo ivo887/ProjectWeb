@@ -89,6 +89,16 @@
     display: block;
 }
 
+.nav-version {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    font-size: 0.85rem;
+    color: #1565c0; /* Close to #0056b3, but visible */
+    opacity: 0.85;
+    z-index: 10;
+    pointer-events: none;
+}
 
 @media (min-width: 641px) {
     .navbar-toggler {
@@ -99,6 +109,14 @@
         display: block;
         height: 100%;
         overflow-y: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .nav-version {
+        left: 10px;
+        bottom: 8px;
+        font-size: 0.8rem;
     }
 }
 
