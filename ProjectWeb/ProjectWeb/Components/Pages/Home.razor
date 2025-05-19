@@ -13,16 +13,16 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 950px;
             margin: 0 auto;
-            padding-bottom: 2em;
+            padding: 0 1.2em 1.2em 1.2em;
         }
  
         section {
-            padding: 3em 0 2.5em 0;
-            margin-bottom: 2.5em;
+            padding: 1.5em 0 1.2em 0;
+            margin-bottom: 1.2em;
             border-radius: 18px;
-            box-shadow: 0 6px 32px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
             background: #fff;
             border: none;
             position: relative;
@@ -35,10 +35,10 @@
             display: block;
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 7px;
+            height: 5px;
             background: linear-gradient(90deg, #ffa500 0%, #0056b3 100%);
             border-radius: 18px 18px 0 0;
-            opacity: 0.18;
+            opacity: 0.15;
         }
 
         section:nth-of-type(even):not(.hero) {
@@ -112,7 +112,7 @@
             border-bottom: 3px solid #b3d4fc;
             box-shadow: 0 2px 10px rgba(0,86,179,0.04);
             border-radius: 18px;
-            margin-bottom: 2.5em;
+            margin-bottom: 1.2em;
         }
 
         .about-snippet .container {
@@ -120,6 +120,7 @@
             align-items: center;
             gap: 2em;
             flex-wrap: wrap;
+            padding: 0;
         }
 
         .about-snippet img.logo-placeholder { 
@@ -145,15 +146,19 @@
             border: 1px solid #e3e8ee;
             border-radius: 18px;
             box-shadow: 0 4px 18px rgba(0,0,0,0.07);
-            margin-bottom: 2.5em;
+            margin-bottom: 1.2em;
+        }
+
+        .about-project-snippet .container {
+            padding: 0;
         }
 
         footer {
             background-color: #333;
             color: #ccc;
             text-align: center;
-            padding: 1.5em 0;
-            margin-top: 3em;
+            padding: 1em 0;
+            margin-top: 2em;
             font-size: 0.9em;
             border-radius: 12px 12px 0 0;
             box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
@@ -186,10 +191,7 @@
             padding-top: 1rem;
         }
 
-        .px-4 {
-            padding-right: 0 !important;
-            padding-left: 0 !important;
-        }
+
 
         .button-link {
             display: inline-block;
@@ -218,7 +220,6 @@
     </style>
 </head>
 <body>
-
 
     <main>
         <section class="hero">
@@ -252,7 +253,8 @@
         <section id="platform" class="about-snippet">
             <div class="container">
                 <div style="display: flex; align-items: center; gap: 1.5em; justify-content: center; margin-bottom: 1.5em;">
-                    <img src="https://drive.google.com/thumbnail?id=1GVQ4fuLVkblQNy-LFCjnliTMEHLRjMB7" alt="AI Кариерен Бот" style="height: 150px; width: 150px; border-radius: 50%; object-fit: cover;">
+                
+                    <img src="/images/лого-проект.png" alt="AI Кариерен Бот" style="height: 150px; width: 150px; border-radius: 50%; object-fit: cover;">
                     <h3 style="margin-bottom: 0;">AI Кариерен Бот за избор на гимназия</h3>
                 </div>
                 <div>

@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Components\Pages\лого-проект.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ProjectWeb.Client\ProjectWeb.Client.csproj" />
     <PackageReference Include="Google.Apis.DiscoveryEngine.v1beta" Version="1.69.0.3781" />
     <PackageReference Include="Google_GenerativeAI" Version="2.5.10" />
@@ -19,6 +23,12 @@
 
   <ItemGroup>
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\images\лого-проект.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
