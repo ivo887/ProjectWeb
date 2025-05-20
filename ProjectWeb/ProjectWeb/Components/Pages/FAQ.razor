@@ -1,0 +1,360 @@
+﻿@page "/faq-7klas"
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Често задавани въпроси: Кариерно ориентиране и кандидатстване след 7. клас</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f4f7f6 0%, #e0f2fe 100%);
+            color: #333;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 0 1.2em 1.2em 1.2em;
+        }
+
+        section {
+            padding: 1.5em 0 1.2em 0;
+            margin-bottom: 1.2em;
+            border-radius: 18px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+            background: #fff;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+
+        section.hero {
+            background:
+                linear-gradient(120deg, #b3d4fc 0%, #e0f2fe 60%, #ffa500 100%),
+                url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-blend-mode: lighten;
+            color: #0056b3;
+            box-shadow: 0 8px 32px rgba(0,86,179,0.10);
+            border: none;
+            border-radius: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        section.hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.08);
+            pointer-events: none;
+        }
+
+        .faq-title-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2em;
+            padding: 1.5em 0 1em 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .faq-title-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffa500 0%, #b3d4fc 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            color: #fff;
+            box-shadow: 0 4px 18px rgba(0,86,179,0.10);
+        }
+
+        .faq-title {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #0056b3;
+            text-align: center;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.2em;
+            text-shadow: 0 2px 8px rgba(0,86,179,0.07);
+        }
+
+        .faq-subtitle {
+            font-size: 1.15em;
+            color: #333;
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        section:not(.hero):before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ffa500 0%, #0056b3 100%);
+            border-radius: 18px 18px 0 0;
+            opacity: 0.15;
+        }
+
+        section:nth-of-type(even):not(.hero) {
+            background: #fafdff;
+        }
+
+        section h3 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 1.5em;
+            color: #0056b3;
+            letter-spacing: 0.5px;
+        }
+
+        .faq-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5em;
+        }
+
+        .faq-item h4 {
+            color: #004a99;
+            font-size: 1.15em;
+            margin-bottom: 0.4em;
+        }
+
+        .faq-item p, .faq-item ul {
+            color: #444;
+            font-size: 1.05em;
+            margin-bottom: 0.5em;
+        }
+
+        .faq-item ul {
+            padding-left: 1.2em;
+        }
+        footer {
+            background-color: #333;
+            color: #ccc;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: 2em;
+            font-size: 0.9em;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #ffa500;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+        @@media (max-width: 600px) {
+            section h3, .faq-item h4
+            {
+                font-size: 1.3em !important;
+            }
+
+            .faq-item p {
+                font-size: 0.98em !important;
+            }
+
+            .container {
+                padding-left: 1em !important;
+                padding-right: 1em !important;
+            }
+
+            section {
+                padding-left: 1em !important;
+                padding-right: 1em !important;
+            }
+
+            .faq-title {
+                font-size: 1.3em !important;
+            }
+            .faq-title-icon {
+                width: 60px !important;
+                height: 60px !important;
+                font-size: 1.5em !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="faq-title-wrapper">
+                    <div class="faq-title-icon" aria-hidden="true">❓</div>
+                    <div class="faq-title">Често задавани въпроси (FAQ):<br>Кариерно ориентиране и кандидатстване след 7. клас</div>
+                    <div class="faq-subtitle">
+                        Отговори на най-важните въпроси за ученици и родители относно избора на гимназия, кариерното ориентиране и процеса на кандидатстване след 7. клас.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h3>I. Кариерно ориентиране</h3>
+                <ul class="faq-list">
+                    <li class="faq-item">
+                        <h4>Какво е кариерно ориентиране?</h4>
+                        <p>Кариерното ориентиране е процес, който ти помага да опознаеш себе си – твоите интереси, силни страни, умения и ценности. Целта е да направиш информиран избор за бъдещото си образование и професионална реализация.</p>
+                    </li>
+                    <li class="faq-item">
+                        <h4>Защо е важно да се замисля за това още в 7. клас?</h4>
+                        <p>Изборът на профил или професионална паралелка след 7. клас е първата важна стъпка към бъдещата ти кариера. Ранното ориентиране ти дава възможност да избереш посока, която наистина те вълнува, което ще те направи по-мотивиран/а в ученето.</p>
+                    </li>
+                    <li class="faq-item">
+                        <h4>Как мога да се ориентирам коя професия/профил е за мен?</h4>
+                        <ul>
+                            <li>Анализирай интересите си: Кои учебни предмети са ти най-интересни? Какви са хобитата ти? Какво обичаш да правиш в свободното си време?</li>
+                            <li>Помисли за силните си страни: В какво си добър/добра? Кои умения ти се отдават лесно?</li>
+                            <li>Говори с хора: Обсъди с родители, учители, по-големи приятели или кариерен консултант.</li>
+                            <li>Направи тестове за кариерно ориентиране: Има много онлайн тестове, които могат да ти дадат насоки (но не ги приемай за крайна истина).</li>
+                            <li>Проучи различни професии: Разбери какво точно правят хората в различните професии, какви умения са нужни, какво е работното ежедневие.</li>
+                        </ul>
+                    </li>
+                    <li class="faq-item">
+                        <h4>Къде мога да намеря информация за различни професии и учебни заведения?</h4>
+                        <ul>
+                            <li>Сайтове на училища и университети.</li>
+                            <li>Портали за кариерно ориентиране.</li>
+                            <li>Дни на отворените врати в училищата.</li>
+                            <li>Разговори с професионалисти от различни сфери.</li>
+                            <li>Специализирани изложения за образование.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h3>II. Кандидатстване след 7. клас</h3>
+                <ul class="faq-list">
+                    <li class="faq-item">
+                        <h4>Какво представляват НВО (Национално външно оценяване) след 7. клас?</h4>
+                        <p>Това са задължителни изпити по Български език и литература (БЕЛ) и Математика. Оценките от тях, заедно с определени оценки от свидетелството за основно образование, формират бала ти за кандидатстване в гимназиите.</p>
+                    </li>
+                    <li class="faq-item">
+                        <h4>Как се формира балът за кандидатстване?</h4>
+                        <p>Балът обикновено се формира като сбор от:</p>
+                        <ul>
+                            <li>Оценките от НВО по БЕЛ и Математика (често удвоени или утроени).</li>
+                            <li>Оценките по определени предмети от свидетелството за завършено основно образование, които са балообразуващи за съответния профил/специалност.</li>
+                        </ul>
+                        <p>Точната формула за балообразуване се определя от всяко училище/профил и се публикува предварително.</p>
+                    </li>
+                    <li class="faq-item">
+                        <h4>Какви са основните видове училища/паралелки, за които мога да кандидатствам след 7. клас?</h4>
+                        <ul>
+                            <li>Профилирани гимназии</li>
+                            <li>Професионални гимназии</li>
+                            <li>Обединени училища / Средни училища с професионални паралелки</li>
+                        </ul>
+                    </li>
+                    <li class="faq-item">
+                        <h4>Какви са основните стъпки при кандидатстване?</h4>
+                        <ul>
+                            <li>Подготовка за НВО</li>
+                            <li>Проучване на училищата и профилите</li>
+                            <li>Подаване на заявление</li>
+                            <li>Класирания</li>
+                            <li>Записване</li>
+                        </ul>
+                    </li>
+                    <li class="faq-item">
+                        <h4>Как да избера подходящо училище и профил/специалност?</h4>
+                        <ul>
+                            <li>Съобрази избора с интересите и силните си страни.</li>
+                            <li>Проучи учебните планове на различните профили/специалности.</li>
+                            <li>Посети дни на отворените врати (ако има).</li>
+                            <li>Говори с настоящи ученици от тези училища/паралелки.</li>
+                            <li>Не се води само от това къде отиват приятелите ти или кое е "модерно".</li>
+                            <li>Обсъди с родителите си, но решението трябва да е предимно твое.</li>
+                        </ul>
+                    </li>
+                    <li class="faq-item">
+                        <h4>Какви документи са ми необходими за кандидатстване?</h4>
+                        <ul>
+                            <li>Заявление за участие в класиране (по образец).</li>
+                            <li>Копие на свидетелство за завършено основно образование.</li>
+                            <li>Служебна бележка с оценките от НВО.</li>
+                            <li>Медицинско свидетелство (за някои професионални специалности).</li>
+                            <li>Други документи, ако са специфично изисквани.</li>
+                        </ul>
+                        <p><strong>Винаги проверявай актуалните изисквания на сайта на РУО и МОН!</strong></p>
+                    </li>
+                    <li class="faq-item">
+                        <h4>Кога са важните срокове, които трябва да следя?</h4>
+                        <p>Сроковете за провеждане на НВО, подаване на заявления, обявяване на класиранията и записване се обявяват всяка година от МОН и РУО. Следи техните официални сайтове!</p>
+                    </li>
+                    <li class="faq-item">
+                        <h4>Какво да правя, ако не ме приемат в училището, което е първото ми желание?</h4>
+                        <p>Не се отчайвай! Има няколко етапа на класиране. Ако не си приет/а на първо класиране на първо желание, можеш да участваш в следващите. Винаги има и други добри варианти, които може да се окажат подходящи за теб.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h3>III. Общи съвети</h3>
+                <ul class="faq-list">
+                    <li class="faq-item">
+                        <h4>Този избор в 7. клас определя ли цялото ми бъдеще?</h4>
+                        <p>Това е важна стъпка, но не определя на 100% цялото ти бъдеще. Винаги имаш възможност за промяна – преориентация в университета, допълнителни курсове, дори смяна на професия по-късно в живота.</p>
+                    </li>
+                    <li class="faq-item">
+                        <h4>Как да се справя със стреса около изпитите и кандидатстването?</h4>
+                        <ul>
+                            <li>Добрата подготовка намалява притеснението.</li>
+                            <li>Почивай достатъчно и се храни здравословно.</li>
+                            <li>Спортувай или прави неща, които те разтоварват.</li>
+                            <li>Говори за притесненията си с родители, приятели или учители.</li>
+                            <li>Използвай техники за релаксация (дълбоко дишане, медитация).</li>
+                            <li>Помни, че това е само един етап и резултатите от изпитите не определят твоята стойност като личност.</li>
+                        </ul>
+                    </li>
+                    <li class="faq-item">
+                        <h4>Каква е ролята на родителите в този процес?</h4>
+                        <ul>
+                            <li>Да подкрепят детето, но не да налагат своето мнение или неосъществени амбиции.</li>
+                            <li>Да помогнат с информация и проучване на възможностите.</li>
+                            <li>Да осигурят спокойна среда за учене и подготовка.</li>
+                            <li>Да насърчават самостоятелното мислене и вземане на решение от страна на детето.</li>
+                            <li>Да бъдат реалисти относно възможностите и интересите на детето.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p style="text-align:center; margin-top:2em;"><strong>Надяваме се този FAQ да бъде полезен! Успех на всички седмокласници!</strong></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>© 2025 Проект „Образованието е Бъдеще“ | Инициатива на ученици от <a href="https://npmg.org/" target="_blank">НПМГ „Акад. Л. Чакалов“</a></p>
+            <p><a href="/about">За проекта</a></p>
+        </div>
+    </footer>
+</body>
+</html>

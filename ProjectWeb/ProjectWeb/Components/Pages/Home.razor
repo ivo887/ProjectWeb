@@ -191,8 +191,6 @@
             padding-top: 1rem;
         }
 
-
-
         .button-link {
             display: inline-block;
             padding: 0.85em 2.2em;
@@ -216,6 +214,62 @@
             box-shadow: 0 4px 16px rgba(255,165,0,0.18);
             text-decoration: none;
             color: #fff !important;
+        }
+
+        @@media (max-width: 600px) {
+            section h3,
+            .feature-item h4,
+            .about-snippet h3 {
+                font-size: 1.3em !important;
+            }
+            .feature-item p,
+            .about-snippet p,
+            .about-project-snippet p {
+                font-size: 0.98em !important;
+            }
+            .button-link {
+                font-size: 1em !important;
+                padding: 0.7em 1.2em !important;
+            }
+            .about-snippet img.logo-placeholder,
+            .about-snippet img {
+                width: 70px !important;
+                height: 70px !important;
+            }
+            .about-snippet .container {
+                gap: 1em !important;
+            }
+            .features {
+                gap: 1em !important;
+            }
+            .feature-item {
+                padding: 1em 0.7em !important;
+            }
+        }
+
+        @@media (max-width: 600px) {
+            .container {
+                padding-left: 1em !important;
+                padding-right: 1em !important;
+            }
+            section,
+            .feature-item,
+            .about-snippet,
+            .about-project-snippet {
+                padding-left: 1em !important;
+                padding-right: 1em !important;
+            }
+            .about-snippet .container {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+        }
+
+        .about-snippet img,
+        .about-snippet img.logo-placeholder {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
         }
     </style>
 </head>
