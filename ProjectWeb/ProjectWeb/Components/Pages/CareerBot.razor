@@ -79,7 +79,7 @@
 </style>
 
 <div class="container careerbot-container">
-    <h2 class="careerbot-title">Кариерен Консултант и Избор на Гимназия</h2>
+    <h2 class="careerbot-title">AI Кариерен Консултант и Избор на Гимназия</h2>
 
     <div class="chat-card shadow-sm mb-3">
         <div class="chat-container" id="chat-container">
@@ -168,8 +168,8 @@
         }
         catch (Exception ex)
         {
-            messages.Add(new ChatMessage { Text = $"Грешка при инициализация на Gemini: {ex.Message}", IsUser = false });
-            Console.WriteLine($"Gemini Initialization Error: {ex}"); // За по-лесен дебъг в конзолата на сървъра
+            messages.Add(new ChatMessage { Text = $"Грешка при инициализация: {ex.Message}", IsUser = false });
+            Console.WriteLine($"Initialization Error: {ex}"); // За по-лесен дебъг в конзолата на сървъра
         }
     }
 
@@ -209,7 +209,7 @@
         try
         {
             // Увеличено време за изчакване, тъй като понякога Gemini може да отнеме повече време
-            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(90));
             var response = await chat.GenerateContentAsync(userMessageText, cts.Token).ConfigureAwait(false);
 
             var botResponseText = response?.Text;
@@ -221,7 +221,7 @@
             else
             {
                 // Проверка за причината, ако отговорът е празен
-                var finishReasonMessage = "Получен е празен или непълен отговор от Gemini.";
+                var finishReasonMessage = "Получен е празен или непълен отговор.";
                 if (response?.Candidates != null && response.Candidates.Any())
                 {
                     var candidate = response.Candidates.First();
@@ -239,12 +239,12 @@
         }
         catch (OperationCanceledException)
         {
-            messages.Add(new ChatMessage { Text = "Времето за отговор от Gemini изтече (60 секунди). Моля, проверете интернет връзката си или опитайте отново по-късно.", IsUser = false });
+            messages.Add(new ChatMessage { Text = "Времето за отговор изтече (90 секунди). Моля, проверете интернет връзката си или опитайте отново по-късно.", IsUser = false });
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Gemini API Error: {ex}"); // За сървърни логове
-            messages.Add(new ChatMessage { Text = $"Грешка при комуникация с Gemini: {ex.Message}. Проверете конзолата за повече детайли.", IsUser = false });
+            Console.WriteLine($"API Error: {ex}"); // За сървърни логове
+            messages.Add(new ChatMessage { Text = $"Грешка при комуникация с: {ex.Message}. Проверете конзолата за повече детайли.", IsUser = false });
         }
         finally
         {
