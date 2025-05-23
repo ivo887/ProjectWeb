@@ -17,7 +17,7 @@
             margin: 0 auto;
             padding: 0 1.2em 1.2em 1.2em;
         }
- 
+
         section {
             padding: 1.5em 0 1.2em 0;
             margin-bottom: 1.2em;
@@ -30,49 +30,49 @@
             transition: box-shadow 0.2s;
         }
 
-        section:not(.hero):before {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #ffa500 0%, #0056b3 100%);
-            border-radius: 18px 18px 0 0;
-            opacity: 0.15;
-        }
+            section:not(.hero):before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 5px;
+                background: linear-gradient(90deg, #ffa500 0%, #0056b3 100%);
+                border-radius: 18px 18px 0 0;
+                opacity: 0.15;
+            }
 
-        section:nth-of-type(even):not(.hero) {
-            background: #fafdff;
-        }
+            section:nth-of-type(even):not(.hero) {
+                background: #fafdff;
+            }
 
-        section.hero {
-            background: 
-                linear-gradient(120deg, #b3d4fc 0%, #e0f2fe 60%, #ffa500 100%),
-                url('https://www.transparenttextures.com/patterns/cubes.png');
-            background-blend-mode: lighten;
-            color: #0056b3;
-            box-shadow: 0 8px 32px rgba(0,86,179,0.10);
-            border: none;
-            border-radius: 18px;
-            position: relative;
-            overflow: hidden;
-        }
+            section.hero {
+                background: linear-gradient(120deg, #b3d4fc 0%, #e0f2fe 60%, #ffa500 100%), url('https://www.transparenttextures.com/patterns/cubes.png');
+                background-blend-mode: lighten;
+                color: #0056b3;
+                box-shadow: 0 8px 32px rgba(0,86,179,0.10);
+                border: none;
+                border-radius: 18px;
+                position: relative;
+                overflow: hidden;
+            }
 
-        section.hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(255,255,255,0.08);
-            pointer-events: none;
-        }
+                section.hero::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    background: rgba(255,255,255,0.08);
+                    pointer-events: none;
+                }
 
-        section h3 {
-            text-align: center;
-            font-size: 2em;
-            margin-bottom: 1.5em;
-            color: #0056b3;
-            letter-spacing: 0.5px;
-        }
+            section h3 {
+                text-align: center;
+                font-size: 2em;
+                margin-bottom: 1.5em;
+                color: #0056b3;
+                letter-spacing: 0.5px;
+            }
 
         .features {
             display: grid;
@@ -90,21 +90,21 @@
             transition: box-shadow 0.2s, border-color 0.2s;
         }
 
-        .feature-item:hover {
-            box-shadow: 0 6px 24px rgba(0,86,179,0.13);
-            border-left: 5px solid #0056b3;
-        }
+            .feature-item:hover {
+                box-shadow: 0 6px 24px rgba(0,86,179,0.13);
+                border-left: 5px solid #0056b3;
+            }
 
-        .feature-item h4 {
-            font-size: 1.3em;
-            margin-bottom: 0.5em;
-            color: #004a99;
-        }
+            .feature-item h4 {
+                font-size: 1.3em;
+                margin-bottom: 0.5em;
+                color: #004a99;
+            }
 
-        .feature-item p {
-            font-size: 1em;
-            color: #555;
-        }
+            .feature-item p {
+                font-size: 1em;
+                color: #555;
+            }
 
         .about-snippet {
             background: #fff;
@@ -115,31 +115,31 @@
             margin-bottom: 1.2em;
         }
 
-        .about-snippet .container {
-            display: flex;
-            align-items: center;
-            gap: 2em;
-            flex-wrap: wrap;
-            padding: 0;
-        }
+            .about-snippet .container {
+                display: flex;
+                align-items: center;
+                gap: 2em;
+                flex-wrap: wrap;
+                padding: 0;
+            }
 
-        .about-snippet img.logo-placeholder { 
-            width: 100px;
-            height: 100px;
-            background-color: #ccc; 
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #fff;
-        }
+            .about-snippet img.logo-placeholder {
+                width: 100px;
+                height: 100px;
+                background-color: #ccc;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                color: #fff;
+            }
 
-        .about-snippet p {
-            flex-grow: 1;
-            font-size: 1.1em;
-            color: #444;
-        }
+            .about-snippet p {
+                flex-grow: 1;
+                font-size: 1.1em;
+                color: #444;
+            }
 
         .about-project-snippet {
             background: #fafdff;
@@ -149,9 +149,9 @@
             margin-bottom: 1.2em;
         }
 
-        .about-project-snippet .container {
-            padding: 0;
-        }
+            .about-project-snippet .container {
+                padding: 0;
+            }
 
         footer {
             background-color: #333;
@@ -164,27 +164,22 @@
             box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
         }
 
-        footer p {
-            margin: 0;
-        }
+            footer p {
+                margin: 0;
+            }
 
-        footer a {
-            color: #ffa500;
-            text-decoration: none;
-        }
+            footer a {
+                color: #ffa500;
+                text-decoration: none;
+            }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
+                footer a:hover {
+                    text-decoration: underline;
+                }
 
         .career-bot-btn-wrapper {
             margin-top: 1.5em;
             text-align: left;
-        }
-
-        .faq-btn-wrapper {
-            text-align: center;
-            margin-top: 0;
         }
 
         .top-row[b-acthlapnmh], article[b-acthlapnmh] {
@@ -214,12 +209,12 @@
             cursor: pointer;
         }
 
-        .button-link:hover, .button-link:focus {
-            background: #ff8800;
-            box-shadow: 0 4px 16px rgba(255,165,0,0.18);
-            text-decoration: none;
-            color: #fff !important;
-        }
+            .button-link:hover, .button-link:focus {
+                background: #ff8800;
+                box-shadow: 0 4px 16px rgba(255,165,0,0.18);
+                text-decoration: none;
+                color: #fff !important;
+            }
 
         @@media (max-width: 600px) {
             section h3,
@@ -227,26 +222,32 @@
             .about-snippet h3 {
                 font-size: 1.3em !important;
             }
+
             .feature-item p,
             .about-snippet p,
             .about-project-snippet p {
                 font-size: 0.98em !important;
             }
+
             .button-link {
                 font-size: 1em !important;
                 padding: 0.7em 1.2em !important;
             }
+
             .about-snippet img.logo-placeholder,
             .about-snippet img {
                 width: 70px !important;
                 height: 70px !important;
             }
+
             .about-snippet .container {
                 gap: 1em !important;
             }
+
             .features {
                 gap: 1em !important;
             }
+
             .feature-item {
                 padding: 1em 0.7em !important;
             }
@@ -257,6 +258,7 @@
                 padding-left: 1em !important;
                 padding-right: 1em !important;
             }
+
             section,
             .feature-item,
             .about-snippet,
@@ -264,10 +266,11 @@
                 padding-left: 1em !important;
                 padding-right: 1em !important;
             }
-            .about-snippet .container {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
+
+                .about-snippet .container {
+                    padding-left: 0 !important;
+                    padding-right: 0 !important;
+                }
         }
 
         .about-snippet img,
@@ -284,7 +287,7 @@
         <section class="hero">
             <div class="container">
                 <h2>Избери своята гимназия след 7. клас лесно и информирано!</h2>
-                <p>Проектът „Образованието е Бъдеще“ помага на седмокласници в София и техните родители да открият най-подходящото училище, съобразено с интереси, таланти и бъдещи цели.</p>
+                <p>Проектът „Образованието е Бъдеще“ помага на седмокласници и техните родители да открият най-подходящото училище, съобразено с интереси, таланти и бъдещи цели.</p>
                 <a href="#platform" class="button-link">Разгледай възможностите</a>
             </div>
         </section>
@@ -299,7 +302,7 @@
                     </div>
                     <div class="feature-item">
                         <h4>Интерактивен Подход</h4>
-                        <p>Чрез нашата платформа ще можеш да избираш училища по интереси, да сравниш възможности и да получиш персонализирани препоръки.</p>
+                        <p>Чрез нашата платформа можеш да търсиш училища по интереси, да сравниш възможности и да получиш персонализирани препоръки.</p>
                     </div>
                     <div class="feature-item">
                         <h4>Реални Мнения</h4>
@@ -312,7 +315,7 @@
         <section id="platform" class="about-snippet">
             <div class="container">
                 <div style="display: flex; align-items: center; gap: 1.5em; justify-content: center; margin-bottom: 1.5em;">
-                
+
                     <img src="/images/лого-проект.png" alt="AI Кариерен Бот" style="height: 150px; width: 150px; border-radius: 50%; object-fit: cover;">
                     <h3 style="margin-bottom: 0;">AI Кариерен Бот за избор на гимназия</h3>
                 </div>
@@ -321,7 +324,7 @@
                         Възползвай се от нашия Кариерен AI Бот – иновативен асистент, който ще ти помогне да избереш най-подходящата гимназия и профил според твоите интереси, силни страни и мечти.
                     </p>
                     <p>
-                        Ботът използва изкуствен интелект, за да анализира твоите отговори на кратък въпросник и да ти даде персонализирани препоръки за училища и кариерни направления. Получаваш не само списък с подходящи гимназии, но и насоки за бъдещо развитие, съобразени с твоите таланти и желания.
+                        Ботът използва изкуствен интелект, за да анализира твоите отговори на кратък въпросник и да ти даде персонализирани препоръки за училища и кариерни направления в София. Получаваш не само списък с подходящи гимназии, но и насоки за бъдещо развитие, съобразени с твоите таланти и желания.
                     </p>
                     <p>
                         <strong>Изпробвай AI Кариерния Бот още сега и направи информиран избор за своето бъдеще!</strong>
@@ -332,34 +335,41 @@
                 </div>
             </div>
         </section>
-
-        <section id="faq" class="about-snippet">
+        <section class="about-project-snippet">
             <div class="container">
-                <h3>Често задавани въпроси</h3>
-                <div>
-                    <details>
-                        <summary>Как да избера най-подходящата гимназия?</summary>
-                        <p>Използвайте нашия AI Кариерен Бот и разгледайте информацията за различните училища, за да откриете най-подходящия профил според вашите интереси и силни страни.</p>
+                <h3>Често задавани въпроси (FAQ) за кандидатстване след 7. клас</h3>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <details style="margin-bottom: 1em;">
+                        <summary><strong>Какви са стъпките за кандидатстване след 7. клас?</strong></summary>
+                        <p>След успешно полагане на изпитите, учениците подават документи за участие в класирането чрез електронната система на МОН. След това избират желаните училища и профили по ред на предпочитание.</p>
+                    </details>
+                    <details style="margin-bottom: 1em;">
+                        <summary><strong>Как се определя класирането?</strong></summary>
+                        <p>Класирането се извършва на база събраните точки от изпитите и успеха от училище. Всеки профил и училище има различен минимален бал.</p>
+                    </details>
+                    <details style="margin-bottom: 1em;">
+                        <summary><strong>Мога ли да кандидатствам в повече от едно училище?</strong></summary>
+                        <p>Да, в заявлението си подреждате всички желани училища и профили по ред на предпочитание. Класирането се извършва автоматично според бала и желанията.</p>
+                    </details>
+                    <details style="margin-bottom: 1em;">
+                        <summary><strong>Какво да направя, ако не бъда приет на първо класиране?</strong></summary>
+                        <p>Можете да участвате във второ и трето класиране, като потвърдите или пренаредите желанията си в системата.</p>
                     </details>
                     <details>
-                        <summary>Откъде идва информацията за училищата?</summary>
-                        <p>Данните са събрани от официални източници, анкети и мнения на настоящи ученици от софийските гимназии.</p>
-                    </details>
-                    <details>
-                        <summary>Мога ли да получа персонализирана препоръка?</summary>
-                        <p>Да! Нашият AI Кариерен Бот ще ви даде индивидуални предложения въз основа на вашите отговори.</p>
+                        <summary><strong>Къде мога да намеря повече информация?</strong></summary>
+                        <p>Посетете сайта на МОН или използвайте нашата платформа за допълнителни ресурси и съвети.</p>
                     </details>
                 </div>
-                <a href="/faq-7klas" class="button-link" style="font-weight: bold;">Виж всички въпроси →</a>
-
+                <div style="text-align: center; margin-top: 2em;">
+                    <a href="/faq-7klas" class="button-link">Още въпроси и отговори →</a>
+                </div>
             </div>
         </section>
-
         <section class="about-project-snippet">
             <div class="container">
                 <h3>Зад Проекта</h3>
                 <p style="text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; font-size: 1.1em; color: #444;">
-                    „Образованието е Бъдеще“ е социален проект, разработен от ученици от <strong>11. клас на НПМГ „Акад. Любомир Чакалов“</strong>. Нашата цел е да подпомогнем седмокласниците в София да направят най-добрия избор за своето бъдещо образование, правейки процеса по-прозрачен и по-малко стресиращ.
+                    „Образованието е Бъдеще“ е социален проект, разработен от ученици от <strong>11. клас на НПМГ „Акад. Любомир Чакалов“</strong>. Нашата цел е да подпомогнем седмокласниците да направят най-добрия избор за своето бъдещо образование, правейки процеса по-прозрачен и по-малко стресиращ.
                     <br><br>
                     <a href="/about" class="button-link" style="font-weight: bold;">Научете повече за нас и нашата мисия →</a>
                 </p>
@@ -367,8 +377,6 @@
         </section>
 
 
-
-      
 
     </main>
 
